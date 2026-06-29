@@ -1142,7 +1142,7 @@ section {
   .petal {
     background: linear-gradient(135deg, rgba(255, 248, 240, 0.95), rgba(196, 168, 130, 0.72));
     filter: drop-shadow(0 2px 4px rgba(107, 91, 90, 0.08));
-    animation-name: petalDriftMobile;
+    animation-name: petalDrift;
   }
 }
 
