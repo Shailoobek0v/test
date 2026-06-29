@@ -139,24 +139,46 @@
   }
 
   // 7. Генерация лепестков (Petals) с адаптивностью
+  // 7. Генерация лепестков (Petals) — теперь одинаково для ПК и мобильных
   const petalsContainer = document.getElementById('petals');
   if (petalsContainer && !prefersReducedMotion) {
-    const isMobile = window.matchMedia('(max-width: 480px)').matches;
-    const petalsCount = isMobile ? 18 : 10;
+    // Выставляем фиксированное большое количество лепестков (как было для ПК)
+    const petalsCount = 18; 
 
     for (let i = 0; i < petalsCount; i++) {
       const petal = document.createElement('span');
       petal.className = 'petal';
       petal.style.left = (Math.random() * 100) + '%';
-      petal.style.setProperty('--size', ((isMobile ? 7 : 6) + Math.random() * (isMobile ? 10 : 8)) + 'px');
-      petal.style.setProperty('--duration', ((isMobile ? 8 : 10) + Math.random() * (isMobile ? 8 : 10)) + 's');
-      petal.style.setProperty('--delay', (-Math.random() * (isMobile ? 10 : 14)) + 's');
-      petal.style.setProperty('--drift', ((isMobile ? -45 : -25) + Math.random() * (isMobile ? 90 : 50)) + 'px');
+      
+      // Настройки размеров, скорости и наклона как на больших экранах
+      petal.style.setProperty('--size', (6 + Math.random() * 8) + 'px');
+      petal.style.setProperty('--duration', (10 + Math.random() * 10) + 's');
+      petal.style.setProperty('--delay', (-Math.random() * 14) + 's');
+      petal.style.setProperty('--drift', (-25 + Math.random() * 50) + 'px');
       petal.style.setProperty('--rotate', (Math.random() * 360) + 'deg');
-      petal.style.setProperty('--opacity', (isMobile ? 0.32 : 0.2) + Math.random() * (isMobile ? 0.24 : 0.25));
+      petal.style.setProperty('--opacity', (0.2 + Math.random() * 0.25));
+      
       petalsContainer.appendChild(petal);
     }
   }
+  // const petalsContainer = document.getElementById('petals');
+  // if (petalsContainer && !prefersReducedMotion) {
+  //   const isMobile = window.matchMedia('(max-width: 480px)').matches;
+  //   const petalsCount = isMobile ? 18 : 10;
+
+  //   for (let i = 0; i < petalsCount; i++) {
+  //     const petal = document.createElement('span');
+  //     petal.className = 'petal';
+  //     petal.style.left = (Math.random() * 100) + '%';
+  //     petal.style.setProperty('--size', ((isMobile ? 7 : 6) + Math.random() * (isMobile ? 10 : 8)) + 'px');
+  //     petal.style.setProperty('--duration', ((isMobile ? 8 : 10) + Math.random() * (isMobile ? 8 : 10)) + 's');
+  //     petal.style.setProperty('--delay', (-Math.random() * (isMobile ? 10 : 14)) + 's');
+  //     petal.style.setProperty('--drift', ((isMobile ? -45 : -25) + Math.random() * (isMobile ? 90 : 50)) + 'px');
+  //     petal.style.setProperty('--rotate', (Math.random() * 360) + 'deg');
+  //     petal.style.setProperty('--opacity', (isMobile ? 0.32 : 0.2) + Math.random() * (isMobile ? 0.24 : 0.25));
+  //     petalsContainer.appendChild(petal);
+  //   }
+  // }
 
   // 8. Анимация полета бабочки (Повторы удалены)
   const butterflyFlyer = document.getElementById('butterflyFlyer');
