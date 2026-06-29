@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Приглашение на Кыз Узатуу — Каралина">
+  <title>Кыз Узатуу — Каралина</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__ring">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <div class="spin-decor spin-decor--tl" aria-hidden="true"></div>
+  <div class="spin-decor spin-decor--br" aria-hidden="true"></div>
+  <div class="spin-decor spin-decor--tr" aria-hidden="true"></div>
+
+  <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+  <div class="petals" id="petals" aria-hidden="true"></div>
+
+  <button class="music-btn" id="musicBtn" aria-label="Включить музыку" title="Музыка">
+    <span class="music-btn__pulse" aria-hidden="true"></span>
+    <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+    </svg>
+  </button>
+  <audio id="bgMusic" src="./image/song.mp3" loop preload="auto"></audio>
+
+  <main class="page">
+
+    <section class="hero" id="hero">
+      <div class="hero__photo">
+        <img src="./image/hero-current.png" alt="Каралина в белом платье">
+        <div class="hero__photo-fade" aria-hidden="true"></div>
+        <div class="hero__photo-blur" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero__content">
+        <svg class="hero__heart hero__heart--left anim anim--slide-left" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.5-7 10-7 10z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        <svg class="hero__heart hero__heart--right anim anim--slide-right" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.5-7 10-7 10z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+
+        <h1 class="hero__name anim anim--slide-right">Каралина</h1>
+        <div class="hero__divider anim anim--slide-up" aria-hidden="true">
+          <span class="hero__divider-line"></span>
+          <span class="hero__divider-gem">✦</span>
+          <span class="hero__divider-line"></span>
+        </div>
+        <p class="hero__event anim anim--slide-up">Кыз Узатуу</p>
+      </div>
+
+      <div class="hero__scroll-hint" aria-hidden="true"><span></span></div>
+    </section>
+
+    <section class="greeting" id="greeting">
+      <div class="deco-divider anim anim--slide-up" aria-hidden="true">
+        <span></span><em>✦</em><span></span>
+      </div>
+
+      <svg class="greeting__vine greeting__vine--left" viewBox="0 0 40 120" aria-hidden="true">
+        <path d="M20 0 Q8 30 20 60 Q32 90 20 120" fill="none" stroke="currentColor" stroke-width="0.8"/>
+        <circle cx="12" cy="28" r="2.5" fill="currentColor" opacity="0.5"/>
+        <circle cx="28" cy="55" r="2" fill="currentColor" opacity="0.4"/>
+        <circle cx="14" cy="82" r="2.5" fill="currentColor" opacity="0.5"/>
+      </svg>
+      <svg class="greeting__vine greeting__vine--right" viewBox="0 0 40 120" aria-hidden="true">
+        <path d="M20 0 Q32 30 20 60 Q8 90 20 120" fill="none" stroke="currentColor" stroke-width="0.8"/>
+        <circle cx="28" cy="28" r="2.5" fill="currentColor" opacity="0.5"/>
+        <circle cx="12" cy="55" r="2" fill="currentColor" opacity="0.4"/>
+        <circle cx="26" cy="82" r="2.5" fill="currentColor" opacity="0.5"/>
+      </svg>
+
+      <div class="greeting__frame anim anim--slide-down">
+        <span class="greeting__quote greeting__quote--open" aria-hidden="true">"</span>
+        <p class="greeting__text">
+          С большой радостью приглашаем вас разделить с нами особенный день —
+          прощание невесты с родительским домом и начало нового, светлого
+          пути. Ваше присутствие сделает этот вечер по-настоящему тёплым
+          и незабываемым.
+        </p>
+        <span class="greeting__quote greeting__quote--close" aria-hidden="true">"</span>
+      </div>
+      <p class="greeting__signature anim anim--slide-up">С любовью, семья</p>
+
+      <div class="deco-divider deco-divider--light anim anim--slide-up" aria-hidden="true">
+        <span></span><em>♥</em><span></span>
+      </div>
+    </section>
+
+    <section class="calendar-pro" id="calendar">
+      <span class="section-corner section-corner--tl" aria-hidden="true"></span>
+      <span class="section-corner section-corner--tr" aria-hidden="true"></span>
+      <span class="section-corner section-corner--bl" aria-hidden="true"></span>
+      <span class="section-corner section-corner--br" aria-hidden="true"></span>
+
+      <div class="deco-divider anim anim--slide-up" aria-hidden="true">
+        <span></span><em>✦</em><span></span>
+      </div>
+
+      <p class="calendar-pro__month anim anim--slide-up">Июль</p>
+
+      <div class="calendar-pro__dates anim anim--slide-up">
+        <span class="calendar-pro__day calendar-pro__day--far">21</span>
+        <span class="calendar-pro__day calendar-pro__day--near">22</span>
+        <span class="calendar-pro__day calendar-pro__day--event">
+          <svg class="calendar-pro__heart" viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M50,85 C50,85 15,60 15,40 C15,25 25,15 35,15 C42,15 48,20 50,25 C52,20 58,15 65,15 C75,15 85,25 85,40 C85,60 50,85 50,85 Z"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+          <span>23</span>
+        </span>
+        <span class="calendar-pro__day calendar-pro__day--near">24</span>
+        <span class="calendar-pro__day calendar-pro__day--far">25</span>
+      </div>
+
+      <p class="calendar-pro__time anim anim--slide-down">
+        <span class="calendar-pro__time-label">саат</span> 16:00
+      </p>
+      <p class="calendar-pro__year anim anim--slide-up">2026</p>
+
+      <div class="calendar-pro__weekdays anim anim--slide-up" id="weekdaysCol"></div>
+    </section>
+
+    <section class="countdown" id="countdown">
+      <div class="deco-divider anim anim--slide-up" aria-hidden="true">
+        <span></span><em>✦</em><span></span>
+      </div>
+
+      <h2 class="section-title anim anim--slide-up">До торжества</h2>
+      <p class="section-subtitle anim anim--slide-down">Тойго чейин</p>
+
+      <div class="countdown__wrap">
+        <span class="countdown__bracket countdown__bracket--tl" aria-hidden="true"></span>
+        <span class="countdown__bracket countdown__bracket--tr" aria-hidden="true"></span>
+        <span class="countdown__bracket countdown__bracket--bl" aria-hidden="true"></span>
+        <span class="countdown__bracket countdown__bracket--br" aria-hidden="true"></span>
+
+        <div class="countdown__grid" id="countdownGrid">
+          <div class="countdown__item anim anim--slide-left"><span class="countdown__value" id="days">—</span><span class="countdown__label">Дней</span></div>
+          <div class="countdown__item anim anim--slide-right"><span class="countdown__value" id="hours">—</span><span class="countdown__label">Часов</span></div>
+          <div class="countdown__item anim anim--slide-left"><span class="countdown__value" id="minutes">—</span><span class="countdown__label">Минут</span></div>
+          <div class="countdown__item anim anim--slide-right"><span class="countdown__value" id="seconds">—</span><span class="countdown__label">Секунд</span></div>
+        </div>
+      </div>
+
+      <p class="countdown__past" id="countdownPast" hidden>
+        Торжество уже началось! Ждём вас с радостью.
+      </p>
+    </section>
+
+    <section class="location" id="location">
+      <div class="deco-divider anim anim--slide-up" aria-hidden="true">
+        <span></span><em>✦</em><span></span>
+      </div>
+
+      <h2 class="section-title anim anim--slide-up">Место проведения</h2>
+      <p class="section-subtitle anim anim--slide-down">Орналасқан жері</p>
+
+      <div class="location__card">
+        <svg class="location__pin anim anim--slide-down" viewBox="0 0 24 32" aria-hidden="true">
+          <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 20 12 20s12-11 12-20C24 5.4 18.6 0 12 0z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+          <circle cx="12" cy="11" r="4" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>
+
+        <p class="location__venue anim anim--slide-right">Ресторан «Тартуга»</p>
+        <p class="location__address anim anim--slide-left">17 ул. Абдыласа Малдыбаева, Бишкек</p>
+
+        <a class="location__map-btn anim anim--slide-up" href="https://maps.app.goo.gl/3uXaQ1DdEbZETt8YA" target="_blank" rel="noopener noreferrer">
+          Открыть карту
+          <span class="location__map-btn-kz">Картаны ачуу</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__ornament anim anim--slide-up" aria-hidden="true">
+        <span></span><em>✦</em><span></span>
+      </div>
+      <p class="anim anim--slide-down">Ждём вас с нетерпением</p>
+      <p class="footer__name anim anim--slide-up">Каралина</p>
+      <div class="footer__dots anim anim--slide-up" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p class="footer__date anim anim--slide-up">23 · 07 · 2026</p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
