@@ -180,14 +180,20 @@ a {
 
 .petal {
   position: absolute;
-  top: -4%;
-  width: var(--size, 10px);
-  height: calc(var(--size, 10px) * 1.3);
-  background: linear-gradient(135deg, var(--color-taupe-light), var(--color-gold));
-  border-radius: 50% 0 50% 50%;
-  opacity: var(--opacity, 0.35);
-  animation: petalDrift var(--duration, 12s) var(--delay, 0s) linear infinite;
-  transform: rotate(var(--rotate, 0deg));
+  top: -20px;
+  background: linear-gradient(135deg, rgba(255, 248, 240, 0.9), rgba(255, 220, 220, 0.7));
+  border-radius: 100% 0% 100% 0% / 100% 0% 100% 0%; /* Красивая форма лепестка */
+  filter: drop-shadow(0 2px 4px rgba(107, 91, 90, 0.08));
+  pointer-events: none;
+  
+  /* Подключаем плавную анимацию */
+  -webkit-animation-name: petalDrift;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  
+  animation-name: petalDrift;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 .petal:nth-child(odd) {
@@ -867,10 +873,11 @@ section {
   pointer-events: none;
 }
 
-.countdown > * {
+.countdown>* {
   position: relative;
   z-index: 1;
 }
+
 .countdown__wrap {
   position: relative;
   padding: var(--space-sm);
@@ -1135,31 +1142,39 @@ section {
 }
 
 @media (max-width: 480px) {
-  .petals {
+  #petals {
     z-index: 3;
+    /* Убеждаемся, что контейнер лепестков виден поверх слоев */
   }
 
   .petal {
-    background: linear-gradient(135deg, rgba(255, 248, 240, 0.95), rgba(196, 168, 130, 0.72));
-    filter: drop-shadow(0 2px 4px rgba(107, 91, 90, 0.08));
+    /* На телефонах используем точно такую же анимацию, как на ПК */
+    -webkit-animation-name: petalDrift;
     animation-name: petalDrift;
   }
 }
 
-@keyframes petalDriftMobile {
+@-webkit-keyframes petalDrift {
   0% {
-    transform: translateY(-8vh) translateX(0) rotate(var(--rotate, 0deg));
-    opacity: 0;
-  }
-
-  12%,
-  86% {
-    opacity: var(--opacity, 0.45);
+    -webkit-transform: translateY(0) translateX(0) rotate(0deg);
+    transform: translateY(0) translateX(0) rotate(0deg);
   }
 
   100% {
-    transform: translateY(108vh) translateX(var(--drift, 42px)) rotate(calc(var(--rotate, 0deg) + 420deg));
-    opacity: 0;
+    -webkit-transform: translateY(105vh) translateX(var(--drift)) rotate(540deg);
+    transform: translateY(105vh) translateX(var(--drift)) rotate(540deg);
+  }
+}
+
+@keyframes petalDrift {
+  0% {
+    -webkit-transform: translateY(0) translateX(0) rotate(0deg);
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: translateY(105vh) translateX(var(--drift)) rotate(540deg);
+    transform: translateY(105vh) translateX(var(--drift)) rotate(540deg);
   }
 }
 
