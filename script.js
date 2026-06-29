@@ -21,14 +21,14 @@
   const bgMusic = document.getElementById('bgMusic');
 
   if (musicBtn && bgMusic) {
-    
+
     // Функция включения музыки при первом действии пользователя
     function playAudio() {
       if (bgMusic.paused) {
         bgMusic.play().then(function () {
           musicBtn.classList.add('is-playing');
           musicBtn.setAttribute('aria-label', 'Выключить музыку');
-          
+
           // Как только музыка заиграла, полностью удаляем все глобальные слушатели
           removeGlobalListeners();
         }).catch(function (error) {
@@ -138,74 +138,45 @@
     }
   }
 
-  // 7. Генерация лепестков (Petals) с адаптивностью
-  // 7. Генерация лепестков (Petals) — теперь одинаково для ПК и мобильных
+
+  // 7. Кроссбраузерная генерация лепестков (Оптимизировано для iOS и Android)
   const petalsContainer = document.getElementById('petals');
   if (petalsContainer && !prefersReducedMotion) {
-    // Выставляем фиксированное большое количество лепестков (как было для ПК)
-    const petalsCount = 18; 
+    // Количество лепестков на мобильных и ПК делаем одинаковым
+    const petalsCount = 18;
 
     for (let i = 0; i < petalsCount; i++) {
       const petal = document.createElement('span');
       petal.className = 'petal';
+
+      // Случайное положение по горизонтали
       petal.style.left = (Math.random() * 100) + '%';
-      
-      // Настройки размеров, скорости и наклона как на больших экранах
-      petal.style.setProperty('--size', (6 + Math.random() * 8) + 'px');
-      petal.style.setProperty('--duration', (10 + Math.random() * 10) + 's');
-      petal.style.setProperty('--delay', (-Math.random() * 14) + 's');
-      petal.style.setProperty('--drift', (-25 + Math.random() * 50) + 'px');
-      petal.style.setProperty('--rotate', (Math.random() * 360) + 'deg');
-      petal.style.setProperty('--opacity', (0.2 + Math.random() * 0.25));
-      
+
+      // Генерируем случайные размеры и прозрачность
+      const size = (6 + Math.random() * 8) + 'px';
+      const opacity = (0.2 + Math.random() * 0.25);
+
+      petal.style.width = size;
+      petal.style.height = size;
+      petal.style.opacity = opacity;
+
+      // Генерируем случайную скорость и задержку старта
+      const duration = (10 + Math.random() * 10) + 's';
+      const delay = (-Math.random() * 14) + 's';
+
+      petal.style.animationDuration = duration;
+      petal.style.webkitAnimationDuration = duration; // Для старых Safari
+      petal.style.animationDelay = delay;
+      petal.style.webkitAnimationDelay = delay; // Для старых Safari
+
+      // Передаем уникальный сдвиг влево/вправо (drift) через инлайн-стиль
+      const drift = (-25 + Math.random() * 50) + 'px';
+      petal.style.setProperty('--drift', drift);
+
       petalsContainer.appendChild(petal);
     }
   }
-  // const petalsContainer = document.getElementById('petals');
-  // if (petalsContainer && !prefersReducedMotion) {
-  //   const isMobile = window.matchMedia('(max-width: 480px)').matches;
-  //   const petalsCount = isMobile ? 18 : 10;
 
-  //   for (let i = 0; i < petalsCount; i++) {
-  //     const petal = document.createElement('span');
-  //     petal.className = 'petal';
-  //     petal.style.left = (Math.random() * 100) + '%';
-  //     petal.style.setProperty('--size', ((isMobile ? 7 : 6) + Math.random() * (isMobile ? 10 : 8)) + 'px');
-  //     petal.style.setProperty('--duration', ((isMobile ? 8 : 10) + Math.random() * (isMobile ? 8 : 10)) + 's');
-  //     petal.style.setProperty('--delay', (-Math.random() * (isMobile ? 10 : 14)) + 's');
-  //     petal.style.setProperty('--drift', ((isMobile ? -45 : -25) + Math.random() * (isMobile ? 90 : 50)) + 'px');
-  //     petal.style.setProperty('--rotate', (Math.random() * 360) + 'deg');
-  //     petal.style.setProperty('--opacity', (isMobile ? 0.32 : 0.2) + Math.random() * (isMobile ? 0.24 : 0.25));
-  //     petalsContainer.appendChild(petal);
-  //   }
-  // }
-
-  // 8. Анимация полета бабочки (Повторы удалены)
-  const butterflyFlyer = document.getElementById('butterflyFlyer');
-  if (butterflyFlyer && !prefersReducedMotion) {
-    butterflyFlyer.innerHTML = '<svg viewBox="0 0 64 64" aria-hidden="true"><g class="butterfly-wing-left"><path d="M31 30C21 10 5 8 6 25c1 13 13 17 25 9z" fill="#d98d95" stroke="#9c7652" stroke-width="1.7"/><path d="M29 34C17 35 10 43 17 52c8 9 17 1 16-14z" fill="#f0c0b0" stroke="#9c7652" stroke-width="1.5"/></g><g class="butterfly-wing-right"><path d="M33 30c10-20 26-22 25-5-1 13-13 17-25 9z" fill="#caa15c" stroke="#9c7652" stroke-width="1.7"/><path d="M35 34c12 1 19 9 12 18-8 9-17 1-16-14z" fill="#e8ad9e" stroke="#9c7652" stroke-width="1.5"/></g><path d="M31 26c-2 6-2 15 0 22 1 3 5 3 6 0 2-7 2-16 0-22-1-3-5-3-6 0z" fill="#6f5a4a"/><path d="M32 24c-4-7-8-10-12-12M36 24c4-7 8-10 12-12" fill="none" stroke="#6f5a4a" stroke-width="1.6" stroke-linecap="round"/></svg>';
-
-    let lastX = window.innerWidth * 0.2;
-    let lastY = window.innerHeight * 0.18;
-
-    function moveButterfly() {
-      const margin = 34;
-      const maxX = Math.max(margin, window.innerWidth - margin - 50);
-      const maxY = Math.max(margin, window.innerHeight - margin - 50);
-      const nextX = margin + Math.random() * (maxX - margin);
-      const nextY = margin + Math.random() * (maxY - margin);
-      const angle = Math.max(-24, Math.min(24, (nextX - lastX) * 0.08));
-      const duration = 4.8 + Math.random() * 2.8;
-
-      butterflyFlyer.style.setProperty('--butterfly-duration', duration + 's');
-      butterflyFlyer.style.transform = 'translate3d(' + nextX + 'px, ' + nextY + 'px, 0) rotate(' + angle + 'deg)';
-      lastX = nextX;
-      lastY = nextY;
-      window.setTimeout(moveButterfly, duration * 1000);
-    }
-
-    moveButterfly();
-  }
 
   // 9. Генерация дней недели на кыргызском языке
   const weekdaysCol = document.getElementById('weekdaysCol');
